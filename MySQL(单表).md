@@ -4,9 +4,10 @@
 4. SQL简介
 5. 综合案例
 # 1.数据库的概念
-==数据库:==DataBase(DB),是村粗和管理数据的仓库
-==数据库管理系统:==DataBase Management System(DBMS),操纵和管理数据库的大型软件
-==SQL:==Structured Query Language(结构化查询语言),操作关系型数据库的变成语言,定义了一套操作关系型数据库的统一标准
+==数据库==:DataBase(DB),是村粗和管理数据的仓库
+==数据库管理系统==:DataBase Management System(DBMS),操纵和管理数据库的大型软件
+==SQL==:Structured Query Language(结构化查询语言),操作关系型数据库的变成语言,定义了一套操作关系型数据库的统一标准
+
 
 # 2.下载并配置MySQL
 MySQL的官网:[MySQL :: Download MySQL Community Server](https://dev.mysql.com/downloads/mysql/)
@@ -46,13 +47,15 @@ net stop mysql  // 停止mysql服务
 ```
 mysqladmin -u root password 1234
 ```
-1234为修改后的密码-可以任意修改自己喜欢的(我的密与校园圈密码相同)
+1234为修改后的密码-可以任意修改自己喜欢的(我的密码与校园圈密码相同)
 
 
 ## 2.5登录MYSQL
 ```
 mysql -uroot -p1234(1234部分修改成自己的密码)//登录
 exit//退出
+或
+quit//退出
 ```
 **-u+用户名 -p+密码**
 
@@ -251,9 +254,9 @@ MySQL中的数据类型有很多,主要分为三类:数值类型,字符串类型
 ## 4.5DML语句
 ==DML:==DML的英文全称是Data Manipulate Language(数据操作语言),用于对数据库中表的记录进行增删改操作
 ### 4.5.1添加数据(INSERT)
-* ==指定字段添加数据:==insert into 表名(字段名1,字段名2) values(值1,值2)
-* ==全部字段添加数据:==insert into 表名 values(值1,值2...)
-* ==批量添加数据(指定字段):==insert into 表名(字段名1,字段名2) values(值1,值2)(值1,值2)
+* ==指定字段添加数据==:insert into 表名(字段名1,字段名2) values(值1,值2)
+* ==全部字段添加数据==:insert into 表名 values(值1,值2...)
+* ==批量添加数据(指定字段)==:insert into 表名(字段名1,字段名2) values(值1,值2)(值1,值2)
 * ==批量添加数据(全部字段)==:insert into 表名 values(值1,值2...)(值1,值2...)
 ```
 -- DML:数据操作语言  
@@ -286,7 +289,7 @@ update tb_staff set name ='张三' ,` update_time` = now() where id = 1;
 -- 2.将tb_staff表的所有员工的入职日期更新为'2010-01-01'  
 update tb_staff set entrydate = '2010-01-01',` update_time` = now();
 ```
-==注意:==修改语句的条件可以有,也可以没有,如果没有条件,则会修改整张表的数据
+==注意==:修改语句的条件可以有,也可以没有,如果没有条件,则会修改整张表的数据
 ### 4.5.3 删除数据(DELETE)
 * ==删除数据==:delete from 表名`[where 条件]`
 ```
@@ -297,18 +300,18 @@ delete from tb_staff where id = 1;
 -- 2.删除tb_staff表中的所有员工  
 delete from tb_staff;
 ```
-==注意:==1)DELETE语句的条件可以有,也可以没有,如果没有条件,则会删除整张表的所有数据
+==注意==:1)DELETE语句的条件可以有,也可以没有,如果没有条件,则会删除整张表的所有数据
     2)DELETE语句不能删除某一个字段的值,如果要操作可以使用UPDATE,将该字段的值置为NULL
 
 
 
 ## 4.6DQL语句
-==DQL:==DQL英文全称是Data Query Language(数据查询语言),用来查询数据库表中的记录
-==关键字:==SELETE
+==DQL==:DQL英文全称是Data Query Language(数据查询语言),用来查询数据库表中的记录
+==关键字==:SELETE
 
 ### 4.6.1DQL语法
 1) 基本查询
-* ==select:==字段列表
+* ==select==:字段列表
 * ==from==:表名列表
 2) 条件查询
 * ==where==:条件列表
@@ -320,12 +323,12 @@ delete from tb_staff;
 5) 分页查询
 * ==limit==:分页参数
 
-### 4.6.1基本查询
+### 4.6.2基本查询
 **基本查询的语法**:
-* ==查询多个字段:==select 字段1,字段2,字段3 from 表名;
+* ==查询多个字段==:select 字段1,字段2,字段3 from 表名;
 * ==查询所有字段(通配符)==:select * from 表名;
 * ==设置别名==:select 字段1`[as 别名1]`,字段2`[as 别名2]` from 表名;
-* ==去除重复记录:==select distinct 字段列表 from 表名;
+* ==去除重复记录==:select distinct 字段列表 from 表名;
 ```
 -- DQL:基本查询  
 -- 1.查询指定字段 name,entrydate 并返回  
@@ -345,10 +348,10 @@ select * from tb_emp;
 -- 4.查询已有员工关联了哪几种职位(不要重复)  
 select distinct job from tb_emp;
 ```
-==注意:==1)`*`代表所有字段,在实际开发中尽量少用(不直观,影响效率)
+==注意==:1)`*`代表所有字段,在实际开发中尽量少用(不直观,影响效率)
      2)as关键字可以省略
 
-### 4.6.2条件查询
+### 4.6.3条件查询
 **条件查询的语法:**
 * ==条件查询==:select 字段列表 from 表名 where 条件列表;
 **比较运算符**
@@ -403,8 +406,8 @@ select * from tb_emp where name like'__';
 -- 10.查询姓'张'的员工信息  
 select * from tb_emp where name like'张%';
 ```
-### 4.6.3分组查询
-==聚合函数:==将一列数据作为一个整体,进行纵向计算
+### 4.6.4分组查询
+==聚合函数==:将一列数据作为一个整体,进行纵向计算
 **语法1**:select 聚合函数(字段列表) from 表名;
 1) count:统计数量
 2) max:最大值
@@ -434,7 +437,7 @@ select  avg(id) from tb_emp;
 -- 5.统计该企业员工的ID之和-sum  
 select  sum(id) from tb_emp;
 ```
-==注意:==
+==注意==:
 * null值不参与所有聚合函数运算
 * 统计数量可以使用:count(`*`),count(字段),count(常量),推荐使用count(`*`)
 
@@ -454,13 +457,13 @@ select job,count(*) from tb_emp where entrydate <= '2015-01-01' group by job;
 -- 最后只呈现员工数量大于等于2的职位  
 -- select job,count(*) from tb_emp where entrydate <= '2015-01-01' group by job having count(*) >= 2;
 ```
-==注意:==where和having的区别
+==注意==:where和having的区别
 1) 执行时机不同:where是分组之前进行过滤,不满足where条件,不参与分组,而having是分组之后对结果进行过滤
 2) 判断条件不同,where不能对聚合函数进行判断,而having可以
 3) 分组之后,查询的字段一般为聚合函数和分组字段,查询其他字段无任何意义
 4) 执行顺序:where>聚合函数>having
 
-### 4.6.4排序查询
+### 4.6.5排序查询
 ==条件查询==:select 字段列表 from 表名`[where 条件列表]``[group by 分组字段]`order by 字段1 排序方式1,字段2,排序方式2...;
 **排序方式**:
 * ASC:升序(默认值)
@@ -478,9 +481,9 @@ select * from tb_emp order by entrydate desc;
 -- 3.根据入职时间对公司的员工进行升序排序,入职时间相同,再按照更新时间进行升序排序  
 select * from tb_emp order by entrydate desc,update_time desc;
 ```
-==注意:==如果是多字段排序,当第一个字段值相同时,才会根据第二个字段进行排序
+==注意==:如果是多字段排序,当第一个字段值相同时,才会根据第二个字段进行排序
 
-### 4.6.5分页查询
+### 4.6.6分页查询
 ==分页查询==:select 字段列表 from 表名 limit 起始索引,查询记录数;
 **起始索引**:从哪一条记录往后进行查询(从0开始)
 **起始索引 = (页码 - 1) `*` 每页展示的记录数**
